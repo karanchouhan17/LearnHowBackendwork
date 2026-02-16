@@ -4,6 +4,9 @@ const db= require('./db')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+require('dotenv').config()     // .env server ko pta hai yeh ek file hai or variables ko utah rha hai
+
+const PORT= process.env.PORT || 3000   // process.env.PORT mein agr PORT ka value persent hoga toh voh us port number ko use kargega varna 3000 ko
 
 
 
@@ -35,37 +38,11 @@ app.get('/',(req,res)=>{
 
 
 
+//.env file mein joh variable hota hai usko procces.env.PORt se access karte hai
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log('listing to the port 3000')
 })
