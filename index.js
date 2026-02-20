@@ -3,10 +3,39 @@ const app= express()
 const db= require('./db')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+// const passport= require('passport')
+// const LocalStrategy= require('passport-local').Strategy
 
 require('dotenv').config()     // .env server ko pta hai yeh ek file hai or variables ko utah rha hai
 
 const PORT= process.env.PORT || 3000   // process.env.PORT mein agr PORT ka value persent hoga toh voh us port number ko use kargega varna 3000 ko
+// .env file mein joh variable hota hai usko procces.env.PORt se access karte hai
+
+
+// imort passport file
+const passport= require('./auth')
+
+// here we initialize passport 
+app.use(passport.initialize())
+const LocalAuthMiddleware= passport.authenticate('local',{session:false})
+
+
+
+
+
+
+
+
+// middleware function 
+
+const logrequest= (req,res,next)=>{
+    console.log(`[${new Date().toLocaleString()}] request made to :${req.originalUrl}`)
+    next()  //move to the next phase 
+}
+
+
+app.use(logrequest);
+
 
 
 
@@ -38,7 +67,6 @@ app.get('/',(req,res)=>{
 
 
 
-//.env file mein joh variable hota hai usko procces.env.PORt se access karte hai
 
 
 

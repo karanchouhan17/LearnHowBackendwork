@@ -2,9 +2,9 @@ const mongoose= require('mongoose')
 require('dotenv').config()
 // const mongoURL= 'mongodb://0.0.0.0:27017/hotels' 
 
-// const mongoURL= 'mongodb+srv://karandev75614_db_user:karan1234@cluster0.a6z9eud.mongodb.net/' // online db culster setup
+const mongoURL= 'mongodb+srv://karandev75614_db_user:karan1234@cluster0.a6z9eud.mongodb.net/' // online db culster setup
 
-const mongoURL= process.env.MONGOD_URL;  
+// const mongoURL= process.env.MONGOD_URL;   
 
 // set up mongodb connection
 mongoose.connect(mongoURL)
